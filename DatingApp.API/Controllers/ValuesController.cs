@@ -18,12 +18,13 @@ namespace DemoAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             var values = await _context.Values.ToListAsync();
             return Ok(values);
         }
-        
+
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
