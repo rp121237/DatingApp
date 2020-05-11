@@ -8,6 +8,8 @@ import { User } from 'src/app/_models/user';
 })
 export class MembercardComponent implements OnInit {
   @Input() user: User;
+
+  // defaultPhoto: '/../../../assets/user.png';
   constructor() { }
 
   ngOnInit(): void {
