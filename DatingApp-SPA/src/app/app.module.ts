@@ -4,11 +4,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeagoModule } from 'ngx-timeago';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 
@@ -61,6 +64,8 @@ export function tokenGetter(){
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot(),
+      ButtonsModule.forRoot(),
       JwtModule.forRoot({
          config: {
             tokenGetter,
@@ -70,7 +75,8 @@ export function tokenGetter(){
       }),
       TabsModule.forRoot(),
       NgxGalleryModule,
-      FileUploadModule
+      FileUploadModule,
+      TimeagoModule.forRoot()
    ],
    providers: [
       AuthService,

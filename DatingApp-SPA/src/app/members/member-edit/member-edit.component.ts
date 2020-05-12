@@ -15,6 +15,8 @@ export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   user: User;
   photoUrl: string;
+  live: true;
+
 
 
   @HostListener('window:beforeUnload', ['$event'])
@@ -26,7 +28,7 @@ export class MemberEditComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private alertify: AlertifyService, private auth: AuthService,
-              private userService: UserService) { }
+              private userService: UserService) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(data =>  {
