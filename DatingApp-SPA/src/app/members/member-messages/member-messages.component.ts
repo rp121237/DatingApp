@@ -27,16 +27,16 @@ export class MemberMessagesComponent implements OnInit {
   loadMessages(){
     const currentUserId = +this.authService.decodedToken.nameid;
     this.userService.getMessageThread(this.authService.decodedToken.nameid, this.recipientId)
-      //  .pipe(
-      //    tap(message => {
-      //      // tslint:disable-next-line: prefer-for-of
-      //      for (let index = 0; index < this.messages.length; index++) {
-      //        if (this.messages[index].isRead === String(false) && this.messages[index].recipientId === currentUserId) {
-      //          this.userService.markAsRead(currentUserId, this.messages[index].id);
-      //        }
-      //      }
-      //    })
-      //  )
+       .pipe(
+         tap(message => {
+           // tslint:disable-next-line: prefer-for-of
+           for (let index = 0; index < message?.length; index++) {
+             if (JSON.parse(message[index].isRead) === false && message[index].recipientId === currentUserId) {
+               this.userService.markAsRead(currentUserId, message[index].id);
+             }
+           }
+         })
+       )
         .subscribe((messages) => {
           this.messages = messages;
         }, error => {

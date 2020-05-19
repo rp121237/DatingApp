@@ -26,15 +26,15 @@
           <th style="width: 20%"></th>
         </tr>
         <tr *ngFor="let message of messages" [routerLink]="['/members', 
-          messageContainer.toLowerCase() == 'Outbox'.toLowerCase() ? message.recipientId : message.senderId]"
+          messageContainer?.toLowerCase() == 'Outbox'.toLowerCase() ? message.recipientId : message.senderId]"
            [queryParams]="{tab: 3}">
           <td>{{message.content}}</td>
           <td>
-            <div *ngIf="messageContainer.toLowerCase() != 'Outbox'.toLowerCase()">
+            <div *ngIf="messageContainer?.toLowerCase() != 'Outbox'.toLowerCase()">
                   <img src={{message?.senderPhotoUrl}} class="img-circle rounded-circle mr-1">
                   <strong>{{message.senderKnownAs}}</strong>
             </div>
-            <div *ngIf="messageContainer.toLowerCase() == 'Outbox'.toLowerCase()">
+            <div *ngIf="messageContainer?.toLowerCase() == 'Outbox'.toLowerCase()">
                   <img src={{message?.recipientPhotoUrl}} class="img-circle rounded-circle mr-1">
                   <strong>{{message.recipientKnownAs}}</strong>
             </div>
